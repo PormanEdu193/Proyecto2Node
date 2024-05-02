@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    a(href='/bicycles') Volver
+    br
+    br
+    h1 Nueva bicicleta
+    br
+    br
+    form(method='post', action='/bicycles/create')
+        div.form-group
+            label(for='id') ID
+            input#id.form-control(type='text', name='id')
+        div.form-group
+            label(for='color') Color
+            input#color.form-control(type='text', name='color')
+        div.form-group
+            label(for='model') Modelo
+            input#model.form-control(type='text', name='model')
+        div.form-group
+            label(for='lat') Latitud
+            input#lat.form-control(type='text', name='lat')
+        div.form-group
+            label(for='lng') Longitud
+            input#lng.form-control(type='text', name='lng')
+        button.btn.btn-primary(type='submit') Crear

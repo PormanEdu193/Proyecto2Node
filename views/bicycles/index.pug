@@ -1,0 +1,24 @@
+extends ../layout
+
+block content 
+    a(href='/bicycles/create') Nueva bicicleta
+    table.table
+        thead 
+            tr
+                th #ID
+                th Color
+                th Modelo
+                th Ubicacion
+                th Acciones
+        tbody
+            each bicycle in bicycles
+                tr
+                    td=bicycle.id
+                    td=bicycle.color
+                    td=bicycle.model
+                    td=bicycle.location
+                    td  
+                        a.btn.btn-primary(href="/bicycles/"+bicycle.id+"/update") Actualizar
+                        form(action="/bicycles/"+bicycle.id+"/delete", method="post")
+                            input(type="hidden", name="id", value=bicycle.id)
+                            button.btn.btn-danger(type="submit") Eliminar
