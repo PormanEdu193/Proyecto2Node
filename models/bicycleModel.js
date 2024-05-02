@@ -55,7 +55,11 @@ Bicycle.update = function(bike){
         throw new Error(`Bicycle not found with id: ${bike.id}`);
     }
 }
-var bicycle1 = new Bicycle(1, 'red', 'mountain', [0, 0]);
+var bicycle1 = new Bicycle(1, 'red', 'mountain', [4.6115, -74.0833]);
+var bicycle2 = new Bicycle(2, 'blue', 'road', [4.6097, -74.0817]);
+var bicycle3 = new Bicycle(3, 'green', 'urban', [4.7097, -75.0817]);
 Bicycle.addBicycle(bicycle1);
+Bicycle.addBicycle(bicycle2);
+Bicycle.addBicycle(bicycle3);
 // Export the Bicycle object
 module.exports = Bicycle;
