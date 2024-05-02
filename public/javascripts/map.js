@@ -30,3 +30,5 @@ if (navigator.geolocation) {
 } else {
     console.log("Geolocation is not supported by this browser.");
 }
+
+// Autor: Andres Felipe Calderon Mancera
