@@ -8,14 +8,20 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www"
+    "devstart": "nodemon ./bin/www",
+    "test": "jasmine",
+    "test-api": "jasmine spec/api/bicycle_api_test.spec.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.19.2",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "pug": "2.0.0-beta11"
+    "pug": "^2.0.4",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jasmine": "^5.1.0"
   }
 }

@@ -63,6 +63,7 @@ Bicycle.update = function(bike){
     }
 }
 
+/*
 // Crear algunas instancias de Bicycle
 var bicycle1 = new Bicycle(1, 'red', 'mountain', [4.6115, -74.0833]);
 var bicycle2 = new Bicycle(2, 'blue', 'road', [4.6097, -74.0817]);
@@ -72,6 +73,7 @@ var bicycle3 = new Bicycle(3, 'green', 'urban', [4.6136, -74.0850]);
 Bicycle.addBicycle(bicycle1);
 Bicycle.addBicycle(bicycle2);
 Bicycle.addBicycle(bicycle3);
+*/
 
 // Exportar el objeto Bicycle para que pueda ser utilizado en otros archivos
 module.exports = Bicycle;
