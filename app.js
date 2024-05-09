@@ -4,11 +4,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require('mongoose')
 // Requerir las rutas de los diferentes endpoints
 var indexRouter = require('./routes/index'); // Ruta para las vistas principales
 var bicyclesRouter = require('./routes/bicycles'); // Ruta para las vistas relacionadas con las bicicletas
 var bicyclesApiRouter = require('./routes/api/bicyclesApi'); // Ruta para la API de bicicletas
+
+// Conectar a la base de datos
+var mongoDB = 'mongodb://localhost/bicycles_network';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Error de conexión con MongoDB:'));
+db.once('open', function() {
+  console.log('Conexión exitosa con MongoDB');
+});
+
 
 // Crear una instancia de la aplicación Express
 var app = express();
