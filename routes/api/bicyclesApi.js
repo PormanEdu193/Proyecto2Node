@@ -13,15 +13,19 @@ var bicyclesApiController = require('../../controllers/api/bicycleApiController'
 router.get('/', bicyclesApiController.bicycle_list);
 
 // Ruta para manejar la creación de una bicicleta
-router.post('/create', bicyclesApiController.bicycle_create);
+router.post('/create', (req, res) => {
+    bicyclesApiController.bicycle_create(req, res, req.body);
+});
 
 // Ruta para manejar la eliminación de una bicicleta
-router.delete('/delete', bicyclesApiController.bicycle_delete);
+router.delete('/delete', (req, res) => {
+    bicyclesApiController.bicycle_delete(req, res, req.body);
+});
 
 // Ruta para manejar la actualización de una bicicleta
-router.put('/update', bicyclesApiController.bicycle_update);
+router.put('/update', (req, res) => {
+    bicyclesApiController.bicycle_update(req, res, req.body);
+});
 
 // Exportar el enrutador para que pueda ser utilizado por otros archivos
 module.exports = router;
-
-// Autor: Andres Felipe Calderon Mancera

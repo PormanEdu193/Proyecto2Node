@@ -9,16 +9,19 @@ var mongoose = require('mongoose')
 var indexRouter = require('./routes/index'); // Ruta para las vistas principales
 var bicyclesRouter = require('./routes/bicycles'); // Ruta para las vistas relacionadas con las bicicletas
 var bicyclesApiRouter = require('./routes/api/bicyclesApi'); // Ruta para la API de bicicletas
+var userApiRouter = require('./routes/api/users')
 
 // Conectar a la base de datos
-var mongoDB = 'mongodb://localhost/bicycles_network';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Error de conexión con MongoDB:'));
-db.once('open', function() {
-  console.log('Conexión exitosa con MongoDB');
-});
+if (process.env.NODE_ENV !== 'test') {
+  var mongoDB = 'mongodb://localhost/bicycles_network';
+  mongoose.connect(mongoDB, { useNewUrlParser: true });
+  mongoose.Promise = global.Promise;
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'Error de conexión con MongoDB:'));
+  db.once('open', function() {
+    console.log('Conexión exitosa con MongoDB');
+  });
+}
 
 
 // Crear una instancia de la aplicación Express
@@ -39,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter); // Ruta principal
 app.use('/bicycles', bicyclesRouter); // Ruta para las vistas relacionadas con las bicicletas
 app.use('/api/bicyclesApi', bicyclesApiRouter); // Ruta para la API de bicicletas
+app.use('/api/users', userApiRouter)
 
 // Manejador para errores 404 (no encontrado)
 app.use(function(req, res, next) {

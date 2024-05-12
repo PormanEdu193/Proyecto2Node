@@ -28,13 +28,22 @@ bicycleSchema.methods.toString = function(){
 }
 
 // Método estático para mostrar todas las bicicletas
-bicycleSchema.statics.allBicycles = function(cb){
-    return this.find({}, cb);
-}
+bicycleSchema.statics.allBicycles = function() {
+    return this.find({}).exec();
+};
 
 // Método estático para añañdir una bicicleta
-bicycleSchema.statics.add = function(newBike, cb){
-    this.create(newBike, cb);
+bicycleSchema.statics.add = function(newBike) {
+    return this.create(newBike); // `create()` devuelve una promesa en Mongoose
+}
+// Método estático para encontrar una bicicleta por su código
+bicycleSchema.statics.findByCode = function(code){
+    return this.findOne({code: code});
+}
+
+// Método estático para eliminar una bicicleta por su código
+bicycleSchema.statics.removeByCode = function(code){
+    return this.deleteOne({code: code});
 }
 
 // Exportar el modelo de la bicicleta
